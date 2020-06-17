@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<!--
+	Landed by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>ME Portfolio</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header">
+					<h1 id="logo"><a href="index.html">Mateusz Eckardt</a></h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li>
+								<a href="#">Projects</a>
+								<ul>
+									<li><a href="project1.html">Project 1</a></li>
+									<li><a href="project2.html">Project 2</a></li>
+								</ul>
+							</li>							
+							</ul>
+					</nav>
+				</header>
+
+			<!-- Main -->
+				<div id="main" class="wrapper style1">
+					<div class="container">
+						<header class="major">
+							<h3>Project 2 - Selenium Unit Testing Framework</h3>							
+						</header>
+
+						<!-- Content -->
+							<section id="content">								
+								<h3>Idea</h3>
+								<p>Testing is all about automation right? You are developing a new project and there comes the time when you have to check if everything that has been done so far is running smoothly.</p>
+								<p>If you are not building a very complex project you can perform those tests manually. But that can get very tedious very fast. So what can be done about it to make it less of a hassle? Enter <u>Selenium</u>.</p>
+								<h3>Approach</h3>
+								<p>I have decided to create a small framework that may be applied and adjusted to your liking depending on what it is that you are trying to test.</p>								
+							<header class="major">
+								<h4>Step 1</h4>								
+							</header>
+							<p>We need to create a few files in which we will store all of our usability. All of those files will be building blocks for our main file. So first, let us start with a page object.</p>							
+							<script src="https://gist.github.com/Deckartemus/4ef8ccfc75d0c3ac18ae5f9242205ae6.js"></script>
+							<p></p>
+							<p>Each page on our website we want to define inside of a class in order to easily check for everything we want. This is where the most of Selenium code is written.</p>
+							<p>We set up a Base Page class which is the base class for all of our pages. After that we create our MainPage (which essentially is a home page) and LoginPage (which is a page after we log in). We have access to the constructor method (or any other methods we define inside BasePage) because every page class we define inherits from the BasePage.
+								Each class has access to the locators that are specified in the next step. In order to click a login button we want to find element that is denoted by locator that is put in the MainPageLocators in the <i>locators.py</i> in the next step. Adding an asterisk lets us unpack the tuple and pass it as an argument.</p>
+							<header class="major">
+								<h4>Step 2</h4>
+							</header>
+							<p>Lets take a look at locators that we have to get access to.</p>
+							<script src="https://gist.github.com/Deckartemus/3602871090debab1347b74fe8e51c40e.js"></script>
+							<p></p>
+							<p>Any way we locate elements by is kept here in one organized file. It makes changing id's or css selectors easy. Notice capitalized letters as we define our locators as constants.</p>
+							<p>We create classes that represents objects that we want to find, so in our case we need access to the MainPage locators and LoginPage locators.</p>
+							<header class="major">
+								<h4>Step 3</h4>
+							</header>
+							<p>Lets take a look at element object.</p>
+							<script src="https://gist.github.com/Deckartemus/8086ce964faaf7ff6049341a50b8d32a.js"></script>
+							<p></p>
+							<p>In this file we basically want to represent a single element on the page. We define our set and get methods and what we are saying here is that when we have an element on our page and we want to set or get the value we follow the process inside our method.
+								 As for the get method what that says is that every time we set up that base object and any time we want to access or change value it will automatically implement that functionality. 
+								 In our example that is applicable to the search bar. So we locate that element, we clear the input field and send whatever value is passed.</p>
+							<header class="major">
+								<h4>Step 4</h4>
+							</header>
+							<p>Finally we arrive at our main file, which combines everything and this is where we write our tests.</p>
+							<script src="https://gist.github.com/Deckartemus/2f879742777ba858d50fecb3d3d80805.js"></script>
+							<p></p>
+							<p>Here we create all of our classes for test cases that we want to perform on our website. In this example we define class Login as our test case. So our test looks like this:
+								<ul>
+									<li>
+										Check if the title of the page has the word Orange in it
+									</li>
+									<li>
+										Locate the input field for login and pass the value
+									</li>
+									<li>
+										Locate the input field for password and pass the value
+									</li>
+									<li>
+										Click login
+									</li>
+									<li>
+										Click the dropdown menu
+									</li>
+									<li>
+										Click logout
+									</li>
+								</ul>
+							</p>
+							<p>And we are done!</p>
+							</section>
+					</div>
+				</div>
+
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+						<li><a href="https://www.linkedin.com/in/matteckardt/" target="_blank" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+						<li><a href="https://github.com/Deckartemus" target="_blank" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+						<li><a href="mailto:mati.eckardt@gmail.com" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Mateusz Eckardt</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
